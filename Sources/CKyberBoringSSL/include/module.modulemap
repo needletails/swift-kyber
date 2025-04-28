@@ -1,0 +1,4 @@
+module CKyberBoringSSL {
+    header "CKyberBoringSSL.h"
+    export *
+}
