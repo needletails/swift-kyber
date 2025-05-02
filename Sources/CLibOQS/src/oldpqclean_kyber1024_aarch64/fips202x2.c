@@ -105,7 +105,8 @@ extern void PQCLEAN_KYBER1024_AARCH64_f1600x2(v128*, const uint64_t*);
 static inline
 void KeccakF1600_StatePermutex2(v128 state[25])
 {
-#if (__APPLE__ && __ARM_FEATURE_CRYPTO) || (__ARM_FEATURE_SHA3) /* although not sure what is being implemented, we find something fast */
+
+#if __ARM_FEATURE_SHA3
   PQCLEAN_KYBER1024_AARCH64_f1600x2(state, neon_KeccakF_RoundConstants);
 #else
   v128 Aba, Abe, Abi, Abo, Abu;

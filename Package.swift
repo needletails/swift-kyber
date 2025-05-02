@@ -1,10 +1,14 @@
-// swift-tools-version: 6.1
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "swift-kyber",
+    platforms: [
+        .macOS(.v15),
+        .iOS(.v18),
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -58,8 +62,8 @@ let package = Package(
                 .headerSearchPath("src/sha3/xkcp_low/KeccakP-1600times4/avx2"),
                 .headerSearchPath("src/sha3/xkcp_low/KeccakP-1600times4/serial"),
                 .define("OQS_DIST_BUILD"),
-                .define("OQS_ENABLE_KEM_kyber_1024_aarch64"),
-                .define("OQS_ENABLE_KEM_kyber_1024")
+                .define("OQS_ENABLE_KEM_kyber_1024_aarch64", .when(platforms: [.iOS, .macOS])),
+                .define("OQS_ENABLE_KEM_kyber_1024"),
             ]
         ),
         .target(

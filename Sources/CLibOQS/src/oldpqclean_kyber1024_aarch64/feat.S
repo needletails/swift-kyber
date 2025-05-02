@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#if (__APPLE__ && __ARM_FEATURE_CRYPTO) || (__ARM_FEATURE_SHA3)
+#if __ARM_FEATURE_SHA3
 
 .macro round
     ; Execute theta, but without xoring into the state yet.
@@ -166,3 +166,4 @@ loop:
     ret lr
 
 #endif
+
